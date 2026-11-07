@@ -1,12 +1,30 @@
+# Nexus Tasks Desktop
+
+Aplicação de organização de tarefas com Kanban, Pomodoro, metas, anotações e backups.
+
+## Estrutura
+
+- [`package.json`](./package.json)
+
+## Visão geral
+
+O código e os materiais deste repositório estão organizados para consulta e evolução do projeto. As funcionalidades descritas refletem os arquivos presentes, sem pressupor uma publicação em produção.
+
+## Tecnologias
+
+- electron
+
+## Documentação do projeto
+
 # NEXUS TAREFAS AI - Grau Técnico Desktop
 
 <div align="center">
 
-[![Download Windows](https://img.shields.io/badge/Download_Livre-Windows_Port%C3%A1til-0ea5e9?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ithalo098/teste/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)
-[![Release](https://img.shields.io/github/v/release/ithalo098/teste?style=for-the-badge&color=10b981)](https://github.com/ithalo098/teste/releases/tag/v1.0.0)
-[![Status](https://img.shields.io/badge/Status-100%25_Offline-a855f7?style=for-the-badge)](https://github.com/ithalo098/teste/releases/tag/v1.0.0)
+[![Download Windows](https://img.shields.io/badge/Download_Livre-Windows_Port%C3%A1til-0ea5e9?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ithalo098/nexus-tasks-desktop/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)
+[![Release](https://img.shields.io/github/v/release/ithalo098/teste?style=for-the-badge&color=10b981)](https://github.com/ithalo098/nexus-tasks-desktop/releases/tag/v1.0.0)
+[![Status](https://img.shields.io/badge/Status-100%25_Offline-a855f7?style=for-the-badge)](https://github.com/ithalo098/nexus-tasks-desktop/releases/tag/v1.0.0)
 
-### 📥 [CLIQUE AQUI PARA BAIXAR O EXECUTÁVEL GRÁTIS (.ZIP)](https://github.com/ithalo098/teste/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)
+### 📥 [CLIQUE AQUI PARA BAIXAR O EXECUTÁVEL GRÁTIS (.ZIP)](https://github.com/ithalo098/nexus-tasks-desktop/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)
 *(Funciona em qualquer PC com Windows sem precisar instalar Node.js ou dependências!)*
 
 </div>
@@ -14,7 +32,7 @@
 ---
 
 ## ⚡ Como Usar a Versão Executável (.exe)
-1. Baixe o pacote: **[Nexus_Tarefas_AI_Universal.zip](https://github.com/ithalo098/teste/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)**
+1. Baixe o pacote: **[Nexus_Tarefas_AI_Universal.zip](https://github.com/ithalo098/nexus-tasks-desktop/releases/download/v1.0.0/Nexus_Tarefas_AI_Universal.zip)**
 2. Extraia os arquivos para qualquer pasta ou pendrive.
 3. Dê dois cliques em **`Nexus Tarefas AI.exe`** (ou no **`iniciar.bat`**).
 4. O aplicativo abre direto no Windows sem precisar de internet nem de programas adicionais!
@@ -42,7 +60,7 @@
 
 ```bash
 # 1. Clonar o repositório
-git clone https://github.com/ithalo098/teste.git
+git clone https://github.com/ithalo098/nexus-tasks-desktop.git
 cd teste
 
 # 2. Instalar dependências
