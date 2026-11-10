@@ -124,12 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarAtalhosTeclado();
   renderizarLista();
 
-  // Inicializa IA no canto e Audio Cibernetico
-  CYBER_AUDIO.init();
-  if (typeof NEXUS_AI !== 'undefined') {
-    NEXUS_AI.inicializar();
-  }
-
   // Formulario de cadastro
   const form = document.getElementById('formTarefa');
   form.addEventListener('submit', (e) => {
@@ -271,4 +265,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-bs-theme', 'dark');
   document.body.setAttribute('data-bs-theme', 'dark');
   localStorage.setItem('tema_aluno', 'dark');
+
+  // Inicializa IA no canto e Audio Cibernetico POR ULTIMO e com
+  // protecao: se um deles falhar, o formulario e os botoes acima
+  // ja estao ligados e o app continua funcionando.
+  try {
+    CYBER_AUDIO.init();
+  } catch (e) {
+    console.warn('Audio cibernetico indisponivel:', e);
+  }
+  try {
+    if (typeof NEXUS_AI !== 'undefined') {
+      NEXUS_AI.inicializar();
+    }
+  } catch (e) {
+    console.warn('Assistente IA indisponivel:', e);
+  }
 });

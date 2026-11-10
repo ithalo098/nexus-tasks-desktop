@@ -65,13 +65,26 @@ body::before {
   display: none;
 }
 
+/* Conteudo da pagina acima do fundo de estrelas (z-index 0).
+   ATENCAO: .modal e .toast-container NAO entram aqui — o Bootstrap
+   precisa deles com position fixed e z-index alto (1055/1090).
+   Colocar .modal aqui quebrava todos os modais: o backdrop (z 1050)
+   cobria os botoes de Salvar/Excluir e nenhum clique funcionava. */
 .cyber-navbar,
 main,
-.modal,
-.toast-container,
 .nexus-ai-wrapper {
   position: relative;
   z-index: 10;
+}
+
+/* Formulario sempre visivel no desktop: acompanha a rolagem para o
+   botao "Cadastrar no Sistema" nunca ficar escondido abaixo da dobra. */
+@media (min-width: 992px) {
+  #coluna-form > .cyber-card:first-child {
+    position: sticky;
+    top: 76px;
+    z-index: 5;
+  }
 }
 
 /* ==============================================================

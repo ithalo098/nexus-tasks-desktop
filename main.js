@@ -10,8 +10,8 @@ let janelaPrincipal = null;
 
 function criarJanela() {
   janelaPrincipal = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1280,
+    height: 900,
     minWidth: 850,
     minHeight: 600,
     title: 'NEXUS TAREFAS AI - Grau Técnico Desktop',
