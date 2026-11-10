@@ -37,6 +37,43 @@ O código e os materiais deste repositório estão organizados para consulta e e
 3. Dê dois cliques em **`Nexus Tarefas AI.exe`** (ou no **`iniciar.bat`**).
 4. O aplicativo abre direto no Windows sem precisar de internet nem de programas adicionais!
 
+## 🍎 Como Usar no MacBook (macOS)
+
+O `.exe` do Windows **não abre no Mac**. No MacBook, use um dos dois jeitos abaixo:
+
+### Jeito 1 — Rodar direto (mais rápido, para testar e desenvolver)
+Precisa do [Node.js LTS](https://nodejs.org) instalado (baixe no site e instale).
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/ithalo098/nexus-tasks-desktop.git
+cd nexus-tasks-desktop
+
+# 2. Instalar dependências (baixa o Electron certo para o seu Mac:
+# Intel ou Apple Silicon, M1/M2/M3/M4)
+npm install
+
+# 3. Abrir o app
+npm start
+```
+
+Dica: depois de clonado, dá para abrir com dois cliques no arquivo **`iniciar.command`** — ele roda o `npm start` para você. (Na primeira vez, rode `chmod +x iniciar.command` no Terminal para deixar o arquivo executável.)
+
+### Jeito 2 — Gerar o aplicativo `.dmg` (para instalar como app normal)
+No MacBook, dentro da pasta do projeto:
+
+```bash
+npm run dist:mac
+```
+
+O instalador sai em `dist/Nexus Tarefas AI-1.0.0.dmg` (e também um `.zip`). Abra o `.dmg`, arraste o app para a pasta **Aplicativos** e pronto.
+
+> ⚠️ O app ainda não tem assinatura da Apple: na primeira abertura o macOS pode dizer que o desenvolvedor não é verificado. Clique com o botão direito no app → **Abrir** → **Abrir** novamente. Depois disso ele abre normal. Para não ver mais esse aviso, é preciso assinar o app com uma conta Apple Developer (não é obrigatório para usar).
+
+### Atalhos no Mac
+- Recarregar: `Cmd + R` · Sair: `Cmd + Q` · DevTools: `Option + Cmd + I`
+- Fechar a janela não encerra o app (padrão do Mac): ele continua no Dock, clique no ícone para reabrir.
+
 ---
 
 ## 👥 Integrantes do Projeto
@@ -61,7 +98,7 @@ O código e os materiais deste repositório estão organizados para consulta e e
 ```bash
 # 1. Clonar o repositório
 git clone https://github.com/ithalo098/nexus-tasks-desktop.git
-cd teste
+cd nexus-tasks-desktop
 
 # 2. Instalar dependências
 npm install

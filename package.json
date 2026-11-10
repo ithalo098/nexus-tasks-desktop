@@ -1,15 +1,56 @@
 {
-  "name": "lista-tarefas-desktop",
-  "version": "1.0.0",
-  "description": "Trabalho de Desenvolvimento Desktop - Lista de Tarefas com Electron e Bootstrap",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "serve": "node server.js"
-  },
   "author": "ithalo098",
-  "license": "ISC",
+  "build": {
+    "appId": "com.ithalo.nexus-tarefas",
+    "copyright": "Copyright © 2026 ithalo098",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "main.js",
+      "preload.js",
+      "server.js",
+      "package.json",
+      "config/**/*",
+      "css/**/*",
+      "js/**/*",
+      "views/**/*",
+      "vendor/**/*",
+      "assets/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "assets/icons/app-icon.png",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "productName": "Nexus Tarefas AI",
+    "win": {
+      "icon": "assets/icons/app-icon.png",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
+  },
+  "description": "Trabalho de Desenvolvimento Desktop - Lista de Tarefas com Electron e Bootstrap",
   "devDependencies": {
-    "electron": "^28.2.0"
-  }
+    "electron": "^28.2.0",
+    "electron-builder": "^24.13.3"
+  },
+  "license": "ISC",
+  "main": "main.js",
+  "name": "lista-tarefas-desktop",
+  "scripts": {
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "pack": "electron-builder --dir",
+    "serve": "node server.js",
+    "start": "electron ."
+  },
+  "version": "1.0.0"
 }

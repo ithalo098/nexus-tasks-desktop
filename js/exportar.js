@@ -1,14 +1,12 @@
 // Modulo de exportacao de dados em CSV e JSON
 const EXPORTADOR = {
   paraCSV(tarefas) {
-    const cabecalho = 'ID;Titulo;Descricao;Categoria;Prioridade;Concluida;DataEntrega
-';
+    const cabecalho = 'ID;Titulo;Descricao;Categoria;Prioridade;Concluida;DataEntrega\n';
     const linhas = tarefas.map(t => {
       return `"${t.id}";"${t.titulo}";"${t.descricao || ''}";"${t.categoria}";"${t.prioridade}";"${t.feita ? 'Sim' : 'Nao'}";"${t.dataLimite || ''}"`;
-    }).join('
-');
+    }).join('\n');
 
-    const conteudo = '﻿' + cabecalho + linhas;
+    const conteudo = '\uFEFF' + cabecalho + linhas;
     const blob = new Blob([conteudo], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);

@@ -1,7 +1,10 @@
 // Processo principal do Electron (main.js)
 // Responsavel por criar a janela nativa do sistema operacional
+// Funciona no Windows, no Linux e no macOS (MacBook).
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const path = require('path');
+
+const isMac = process.platform === 'darwin';
 
 let janelaPrincipal = null;
 
@@ -13,7 +16,10 @@ function criarJanela() {
     minHeight: 600,
     title: 'NEXUS TAREFAS AI - Grau Técnico Desktop',
     backgroundColor: '#07070a',
-    autoHideMenuBar: true,
+    // No macOS a barra de menu fica no topo da tela e nao pode ser
+    // escondida por janela; no Windows/Linux ela some ate apertar Alt.
+    autoHideMenuBar: !isMac,
+    icon: path.join(__dirname, 'assets', 'icons', 'app-icon.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -27,7 +33,31 @@ function criarJanela() {
     janelaPrincipal = null;
   });
 
-  const templateMenu = [
+  // No Mac nao existe tecla F12: DevTools abre com Option + Command + I.
+  const atalhoDevTools = isMac ? 'Alt+Command+I' : 'F12';
+
+  const templateMenu = [];
+
+  // No macOS o primeiro menu e sempre o menu do app (nome, Sobre,
+  // Esconder, Sair). Sem ele o app fica sem o menu padrao do Mac.
+  if (isMac) {
+    templateMenu.push({
+      label: app.name,
+      submenu: [
+        { role: 'about', label: 'Sobre o Nexus Tarefas AI' },
+        { type: 'separator' },
+        { role: 'services', label: 'Serviços' },
+        { type: 'separator' },
+        { role: 'hide', label: 'Esconder Nexus Tarefas AI' },
+        { role: 'hideOthers', label: 'Esconder Outros' },
+        { role: 'unhide', label: 'Mostrar Tudo' },
+        { type: 'separator' },
+        { role: 'quit', label: 'Sair do Nexus Tarefas AI' }
+      ]
+    });
+  }
+
+  templateMenu.push(
     {
       label: 'Arquivo',
       submenu: [
@@ -39,20 +69,22 @@ function criarJanela() {
           }
         },
         {
-          label: 'Ferramentas de Desenvolvedor (F12)',
-          accelerator: 'F12',
+          label: 'Ferramentas de Desenvolvedor',
+          accelerator: atalhoDevTools,
           click: () => {
             if (janelaPrincipal) janelaPrincipal.webContents.toggleDevTools();
           }
         },
         { type: 'separator' },
-        {
+        // No Mac o "Sair" ja esta no menu do app; aqui ele so aparece
+        // no Windows/Linux.
+        ...(isMac ? [] : [{
           label: 'Sair',
           accelerator: 'CmdOrCtrl+Q',
           click: () => {
             app.quit();
           }
-        }
+        }])
       ]
     },
     {
@@ -81,7 +113,7 @@ function criarJanela() {
         }
       ]
     }
-  ];
+  );
 
   const menu = Menu.buildFromTemplate(templateMenu);
   Menu.setApplicationMenu(menu);
@@ -90,6 +122,7 @@ function criarJanela() {
 app.whenReady().then(() => {
   criarJanela();
 
+  // No macOS clicar no icone do Dock reabre a janela (padrao do Mac).
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       criarJanela();
@@ -97,8 +130,10 @@ app.whenReady().then(() => {
   });
 });
 
+// No macOS o app continua aberto no Dock mesmo sem janela (padrao do Mac);
+// no Windows/Linux fechar a ultima janela encerra o app.
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+  if (!isMac) {
     app.quit();
   }
 });
